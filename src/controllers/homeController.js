@@ -54,14 +54,14 @@ let getEditCRUD = async (req, res) => {
     }
 }
 
-let putCRUD = async (req, res) => {
-    let data = req.body;
-    let allUser = await CRUDService.updateUserData(data);
-    // return res.render('displayCRUD.ejs', {
-    //     user: allUser
-    // });
+// let putCRUD = async (req, res) => {
+//     let data = req.body;
+//     let allUser = await CRUDService.updateUserData(data);
+//     return res.render('displayCRUD.ejs', {
+//         user: allUser
+//     });
 
-}
+// }
 
 module.exports = {
     getHomePage: getHomePage,
@@ -70,5 +70,5 @@ module.exports = {
     postCRUD: postCRUD,
     displayGetCRUD: displayGetCRUD,
     getEditCRUD: getEditCRUD,
-    putCRUD: putCRUD,
+    // putCRUD: putCRUD,
 }
