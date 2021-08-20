@@ -1,3 +1,16 @@
 npx sequelize-cli db:migrate
 
 npx sequelize-cli db:seed:all
+
+
+
+
+
+
+
+===GIT====
+
+git add .
+git commit -m '01'
+git remote add origin https://github.com/conmeuden/01.git
+git push origin master
