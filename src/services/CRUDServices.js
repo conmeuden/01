@@ -20,8 +20,8 @@ let crateNewUser = async (data) => {
                 gender: data.gender === '1' ? true : false,
                 roleId: data.roleId,
             })
+            resolve("ok! tạo người dùng mới thành công!")
 
-            resolve("ok!")
         } catch (e) {
             reject(e);
         }
@@ -32,7 +32,7 @@ let crateNewUser = async (data) => {
 let hashUserPassword = (password) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let hashPassword = await bcrypt.hashSync("B4c0/\/", salt);
+            let hashPassword = await bcrypt.hashSync(password, salt);
             resolve(hashPassword);
         } catch (e) {
             reject(e);
@@ -64,16 +64,20 @@ let getUserInfoById = (userId) => {
             })
 
             if (user) {
-                resolve(user)
+                resolve(user);
             } else {
-                resolve('Ko tìm thấy user')
+                resolve('Ko tìm thấy user');
             }
         } catch (e) {
             reject(e);
         }
     })
 }
+
 let updateUserData = (data) => {
+    console.log('data frm service');
+
+
     return new Promise(async (resolve, reject) => {
         try {
             let user = await db.User.findOne({
@@ -83,12 +87,12 @@ let updateUserData = (data) => {
                 user.firstName = data.firstName;
                 user.lastName = data.lastName;
                 user.address = data.address;
-                user.phoneNumber = data.phoneNumber;
+
 
                 await user.save();
 
-                let allUser = await db.User.findAll();
-                resolve(allUser);
+                // let allUser = await db.User.findAll();
+                // resolve(allUser);
             } else {
                 resolve([]);
             }
