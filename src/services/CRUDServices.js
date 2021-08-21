@@ -76,8 +76,6 @@ let getUserInfoById = (userId) => {
 
 let updateUserData = (data) => {
     console.log('data frm service');
-
-
     return new Promise(async (resolve, reject) => {
         try {
             let user = await db.User.findOne({
@@ -87,16 +85,12 @@ let updateUserData = (data) => {
                 user.firstName = data.firstName;
                 user.lastName = data.lastName;
                 user.address = data.address;
-
-
                 await user.save();
-
                 // let allUser = await db.User.findAll();
                 // resolve(allUser);
             } else {
                 resolve([]);
             }
-
         } catch (e) {
             reject(e);
         }
